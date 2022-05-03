@@ -1,0 +1,43 @@
+diff -au 2/config.def.h 1/config.def.h
+--- 2/config.def.h	0000-00-00 00:00:00.000000000 +0000
++++ 1/config.def.h	2000-00-00 00:00:00.000000000 +0000
+@@ -31,6 +31,8 @@
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+ };
+ 
++static const char systray_app_class[] = "trayer";
++
+ /* layout(s) */
+ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+ static const int nmaster     = 1;    /* number of clients in master area */
+diff -au 2/dwm.c 1/dwm.c
+--- 2/dwm.c	0000-00-00 00:00:00.000000000 +0000
++++ 1/dwm.c	0000-00-00 00:00:00.000000000 +0000
+@@ -49,7 +49,7 @@
+ #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
+ #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->wx+(m)->ww) - MAX((x),(m)->wx)) \
+                                * MAX(0, MIN((y)+(h),(m)->wy+(m)->wh) - MAX((y),(m)->wy)))
+-#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
++#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]) || C->issticky)
+ #define LENGTH(X)               (sizeof X / sizeof X[0])
+ #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
+ #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
+@@ -92,7 +92,7 @@
+    int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+    int bw, oldbw;
+    unsigned int tags;
+-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
++	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, issticky;
+    Client *next;
+    Client *snext;
+    Monitor *mon;
+@@ -304,6 +304,9 @@
+                c->mon = m;
+        }
+    }
++    if (strstr(class, systray_app_class)) {
++        c->issticky = 1;
++    }
+    if (ch.res_class)
+        Xree(ch.res_class);
+    if (ch.res_name)F
