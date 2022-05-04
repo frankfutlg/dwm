@@ -1,7 +1,7 @@
-/* frankfut's build of dwm
-*  feel free to fork/use it
-*  inspired on siduck's chadwm
-*/
+/*   frankfut's build of dwm
+ *   feel free to fork/use it
+ *   inspired on siduck's chadwm
+ */
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
@@ -96,6 +96,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] 		= { "dmenu_run", NULL };
 static const char *powermenu[] 		= { "/home/frankfut/.local/bin/dmenu-powermenu", NULL };
 static const char *watchmedia[] 	= { "/home/frankfut/.local/bin/dmenu-watchmedia", NULL };
+static const char *scrot[]		= { "/home/frankfut/.local/bin/dwm-scrot", NULL };
+static const char *scrots[]		= { "/home/frankfut/.local/bin/dwm-scrots", NULL };
+static const char *scrotu[]		= { "/home/frankfut/.local/bin/dwm-scrotu", NULL };
 
 /* keybinds */
 static Key keys[] = {
@@ -109,14 +112,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_s,	   spawn,	   SHCMD("pkill trayer || trayer --width 100 --edge top --align right --expand true --SetDockType true --tint 0x161320 --transparent true --alpha 0 --height 28 --padding 3") },
 	{ MODKEY,			XK_m,	   spawn,	   SHCMD("st -e ncmpcpp") },
 	{ MODKEY,			XK_Return, spawn,	   SHCMD("st") },
-	{ 0,				XK_Print,  spawn,	   SHCMD("scrot '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("scrot --select --line mode=edge '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-	{ MODKEY,			XK_Print,  spawn,	   SHCMD("scrot -u '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-
 		// custom scripts
 	{ MODKEY,			XK_BackSpace, spawn,	   {.v = powermenu } },
 	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = watchmedia } },
-	{ MODKEY,                       XK_c,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = dmenucmd } },	
+	{ 0,				XK_Print,  spawn,	   {.v = scrot } },
+	{ ShiftMask,			XK_Print,  spawn,	   {.v = scrots } },
+	{ MODKEY,			XK_Print,  spawn,	   {.v = scrotu } },
 		// move things around
 	{ MODKEY,			XK_Left,   shiftview,	   {.i = -1 } },
 	{ MODKEY,			XK_Right,  shiftview,	   {.i = +1 } },
