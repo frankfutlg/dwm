@@ -24,8 +24,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono Medium:style=Medium,Regular:size=10:antialias=true:autohint=true",
 					"Symbols Nerd Font Mono:style=2048-em:pixelsize=14:antialias=true:autohint=true",
 					"Material Design Icons:style=Regular:pixelsize=15:antialias=true:autohint=true",
-					"Noto Color Emoji:style=Regular:size=10:antialias=true:autohint=true", 
-					"IPAゴシック:style=Regular:size=12:antialias=true:autohint=true" };
+					"JoyPixels:style=Regular:size=10:antialias=true:autohint=true", 
+					"Takaoゴシック:style=Regular:size=12:antialias=true:autohint=true" };
 /* colors */
 #include "themes/catppuccin.h"
 
