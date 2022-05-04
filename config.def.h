@@ -109,9 +109,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_s,	   spawn,	   SHCMD("pkill trayer || trayer --width 100 --edge top --align right --expand true --SetDockType true --tint 0x161320 --transparent true --alpha 0 --height 28 --padding 3") },
 	{ MODKEY,			XK_m,	   spawn,	   SHCMD("st -e ncmpcpp") },
 	{ MODKEY,			XK_Return, spawn,	   SHCMD("st") },
-	{ 0,				XK_Print,  spawn,	   SHCMD("scrot '~/Media/Screenshots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("scrot --select --line mode=edge '~/Media/Screenshots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-	{ MODKEY,			XK_Print,  spawn,	   SHCMD("scrot -u '~/Media/Screenshots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
+	{ 0,				XK_Print,  spawn,	   SHCMD("scrot '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
+	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("scrot --select --line mode=edge '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
+	{ MODKEY,			XK_Print,  spawn,	   SHCMD("scrot -u '~/pix/scrots/%d-%m-%Y-%H:%M:%S_$wx%h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 
 		// custom scripts
 	{ MODKEY,			XK_BackSpace, spawn,	   {.v = powermenu } },
